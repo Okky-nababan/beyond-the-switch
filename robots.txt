@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://okky-nababan.github.io/beyond-the-switch/sitemap.xml

@@ -25,7 +25,7 @@
      yang diberikan Search Console saat Anda menambahkan properti (metode "HTML tag") -->
 <meta name="google-site-verification" content="GANTI_DENGAN_KODE_VERIFIKASI_ANDA">
 
-<!-- GOOGLE ANALYTICS (GA4): ganti G-XXXXXXXXXX dengan Measurement ID dari akun GA4 Anda -->
+<!-- GOOGLE ANALYTICS (GA4) — sudah terpasang dengan Measurement ID milik Anda -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QB5QHC1SPQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -219,6 +219,61 @@
   .footer-links{ display:flex; gap:18px; font-size:13px; color:var(--ink-dim); }
   .footer-links a{ text-decoration:none; }
   .footer-links a:hover{ color:var(--gold-light); }
+
+  /* ---------- SCROLL REVEAL (JS) ---------- */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.visible{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; } }
+
+  /* ---------- NAVBAR ON SCROLL ---------- */
+  header.nav.scrolled{ box-shadow:0 6px 30px rgba(0,0,0,.45); }
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown-wrap{
+    background:var(--navy-900); border:1px solid var(--line); border-radius:20px;
+    padding:40px 32px; text-align:center;
+  }
+  .countdown-title{ font-family:'Poppins'; font-weight:600; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-light); }
+  .countdown-grid{ display:flex; justify-content:center; gap:18px; margin-top:26px; flex-wrap:wrap; }
+  .cd-unit{
+    min-width:110px; background:var(--navy-950); border:1px solid var(--line); border-radius:16px;
+    padding:20px 14px;
+  }
+  .cd-num{ font-family:'Poppins'; font-weight:700; font-size:42px; color:#fff; line-height:1; font-variant-numeric:tabular-nums; }
+  .cd-label{ margin-top:8px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-dim); }
+  .cd-tba{ margin-top:22px; font-family:'Poppins'; font-weight:600; font-size:22px; color:var(--ink); }
+  .cd-note{ margin-top:10px; color:var(--ink-dim); font-size:14px; }
+  @media (max-width:560px){ .cd-unit{min-width:72px; padding:14px 8px;} .cd-num{font-size:30px;} }
+
+  /* ---------- FAQ ACCORDION ---------- */
+  .faq-list{ border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .faq-item + .faq-item{ border-top:1px solid var(--line); }
+  .faq-q{
+    width:100%; text-align:left; background:var(--navy-950); color:var(--ink);
+    font-family:'Poppins'; font-weight:600; font-size:16px;
+    padding:22px 24px; border:0; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+  }
+  .faq-q:hover{ color:var(--gold-light); }
+  .faq-q .chev{ transition:transform .3s ease; flex-shrink:0; color:var(--gold); }
+  .faq-item.open .faq-q .chev{ transform:rotate(180deg); }
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+    background:var(--navy-900);
+  }
+  .faq-a p{ padding:0 24px 22px; color:var(--ink-dim); font-size:15px; }
+
+  /* ---------- BACK TO TOP ---------- */
+  #toTop{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:48px; height:48px; border-radius:50%;
+    background:var(--yellow); color:var(--navy-950); border:0; cursor:pointer;
+    font-size:20px; font-weight:700;
+    opacity:0; pointer-events:none; transform:translateY(12px);
+    transition:opacity .3s ease, transform .3s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  #toTop.show{ opacity:1; pointer-events:auto; transform:none; }
 </style>
 </head>
 <body>
@@ -237,7 +292,7 @@
   <div class="wrap">
     <div class="badge-row">
       <span class="badge"><span class="dot"></span>Seminar Online · Live on Zoom</span>
-      <span class="badge">Coming Soon Agustus 2026</span>
+      <span class="badge">Coming Soon Agustus</span>
     </div>
     <h1>Menelusuri perjalanan listrik dari <span class="accent">pembangkit</span> hingga pengguna.</h1>
     <p class="lead">Memahami sistem kelistrikan secara menyeluruh — dari cara listrik dibangkitkan, dinaikkan tegangannya, didistribusikan, hingga sistem proteksi yang menjaganya tetap aman sampai ke tangan Anda.</p>
@@ -364,7 +419,7 @@
       </div>
       <div class="info-item">
         <span class="eyebrow">Jadwal</span>
-        <div class="val gold">Segera Diumumkan</div>
+        <div class="val gold">Agustus 2026</div>
       </div>
       <div class="info-item">
         <span class="eyebrow">Untuk Siapa</span>
@@ -373,6 +428,55 @@
       <div class="info-item">
         <span class="eyebrow">Sertifikat</span>
         <div class="val">E-Sertifikat Peserta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hitung-mundur" style="padding-top:0;">
+  <div class="wrap">
+    <div class="countdown-wrap">
+      <div class="countdown-title">Menuju Hari-H Seminar</div>
+      <!-- Saat tanggal belum fix, tampil mode "Agustus 2026". Cara mengaktifkan angka
+           countdown: lihat konstanta EVENT_DATE di bagian <script> paling bawah file ini. -->
+      <div id="cd-tba" class="cd-tba">Agustus 2026</div>
+      <div id="cd-grid" class="countdown-grid" style="display:none;">
+        <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-label">Hari</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Jam</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Menit</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Detik</div></div>
+      </div>
+      <div class="cd-note" id="cd-note">Tanggal pasti akan diumumkan segera — pantau halaman ini.</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pertanyaan Umum</span>
+      <h2>Yang sering ditanyakan.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" type="button">Kapan seminar ini dilaksanakan?<span class="chev">▾</span></button>
+        <div class="faq-a"><p>Seminar direncanakan pada Agustus 2026. Tanggal dan jam pastinya akan diumumkan di halaman ini serta media sosial Beyond The Switch.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Di mana seminar berlangsung?<span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sepenuhnya online melalui Zoom Meeting, jadi bisa diikuti dari mana saja. Link Zoom akan dikirimkan kepada peserta terdaftar sebelum acara.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Siapa saja yang boleh ikut?<span class="chev">▾</span></button>
+        <div class="faq-a"><p>Terbuka untuk semua kalangan — mahasiswa, fresh graduate, teknisi, engineer, hingga masyarakat umum yang ingin memahami kelistrikan. Tidak perlu latar belakang teknik.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Apakah peserta mendapat sertifikat?<span class="chev">▾</span></button>
+        <div class="faq-a"><p>Ya, seluruh peserta yang mengikuti seminar akan mendapatkan e-sertifikat.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Bagaimana cara mendaftar?<span class="chev">▾</span></button>
+        <div class="faq-a"><p>Formulir pendaftaran akan dibuka di halaman ini bersamaan dengan pengumuman jadwal resmi. Klik tombol "Daftar Sekarang" di bagian atas untuk menuju bagian pendaftaran.</p></div>
       </div>
     </div>
   </div>
@@ -419,6 +523,115 @@
     <div class="footer-meta">Understanding the Power Behind Every Switch</div>
   </div>
 </footer>
+
+<button id="toTop" aria-label="Kembali ke atas" title="Kembali ke atas">↑</button>
+
+<script>
+/* ==========================================================
+   FITUR INTERAKTIF — Beyond The Switch
+   ========================================================== */
+
+/* ---------- 1. COUNTDOWN TIMER ----------
+   Saat tanggal seminar sudah FIX, ganti null di bawah dengan
+   tanggal & jam acara, format: 'YYYY-MM-DDTHH:MM:SS+07:00'
+   Contoh:  const EVENT_DATE = '2026-08-15T09:00:00+07:00';
+   Simpan (commit) — angka countdown otomatis aktif.        */
+const EVENT_DATE = null;
+
+(function(){
+  const grid = document.getElementById('cd-grid');
+  const tba  = document.getElementById('cd-tba');
+  const note = document.getElementById('cd-note');
+  if(!EVENT_DATE) return; // mode "Agustus 2026" (belum ada tanggal)
+
+  const target = new Date(EVENT_DATE).getTime();
+  if(isNaN(target)) return;
+  tba.style.display = 'none';
+  grid.style.display = 'flex';
+  note.textContent = 'Sampai jumpa di ruang Zoom!';
+
+  const el = {
+    d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
+    m: document.getElementById('cd-m'), s: document.getElementById('cd-s')
+  };
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const diff = target - Date.now();
+    if(diff <= 0){
+      grid.style.display='none';
+      tba.style.display='block';
+      tba.textContent='Seminar sedang / telah berlangsung';
+      note.textContent='Terima kasih atas partisipasinya!';
+      clearInterval(timer);
+      return;
+    }
+    el.d.textContent = pad(Math.floor(diff/86400000));
+    el.h.textContent = pad(Math.floor(diff/3600000)%24);
+    el.m.textContent = pad(Math.floor(diff/60000)%60);
+    el.s.textContent = pad(Math.floor(diff/1000)%60);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
+/* ---------- 2. SCROLL REVEAL (animasi muncul saat scroll) ---------- */
+(function(){
+  const targets = document.querySelectorAll(
+    '.section-head, .why-card, .journey-item, .speaker-grid, .info-item, .countdown-wrap, .faq-item, .coming-soon, .form-card'
+  );
+  targets.forEach((t,i)=>{
+    t.classList.add('reveal');
+    t.style.transitionDelay = (i%4)*0.08 + 's';
+  });
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(t=>t.classList.add('visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  targets.forEach(t=>io.observe(t));
+})();
+
+/* ---------- 3. NAVBAR: bayangan saat discroll ---------- */
+(function(){
+  const nav = document.querySelector('header.nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, {passive:true});
+})();
+
+/* ---------- 4. FAQ ACCORDION ---------- */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const open = item.classList.contains('open');
+      // tutup semua dulu
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!open){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+
+/* ---------- 5. TOMBOL KEMBALI KE ATAS ---------- */
+(function(){
+  const btn = document.getElementById('toTop');
+  window.addEventListener('scroll', ()=>{
+    btn.classList.toggle('show', window.scrollY > 600);
+  }, {passive:true});
+  btn.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+})();
+</script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beyond The Switch — Menelusuri Perjalanan Listrik dari Pembangkit hingga Pengguna</title>
+<title>Beyond The Switch — The Journey of Electricity | Seri Seminar Kelistrikan</title>
 <meta name="description" content="Seminar online Beyond The Switch bersama Ir. Okky Alexander Nababan, S.T., IPP — memahami sistem kelistrikan dari pembangkit hingga pengguna akhir.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://okky-nababan.github.io/beyond-the-switch/">
@@ -220,6 +220,25 @@
   .footer-links a{ text-decoration:none; }
   .footer-links a:hover{ color:var(--gold-light); }
 
+  /* ---------- BACKGROUND ACCENTS (aksen kelistrikan, opacity 45%) ---------- */
+  .bg-accent{ position:relative; overflow:hidden; }
+  .bg-accent::before{
+    content:''; position:absolute; inset:0; z-index:0;
+    background-position:center; background-size:cover; background-repeat:no-repeat;
+    opacity:.45;
+    /* gradasi tepi atas-bawah agar menyatu halus dengan navy */
+    -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+            mask-image:linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  }
+  .bg-accent::after{
+    content:''; position:absolute; inset:0; z-index:0;
+    background:linear-gradient(180deg, rgba(4,14,32,.55), rgba(4,14,32,.35) 50%, rgba(4,14,32,.6));
+  }
+  .bg-accent > .wrap{ position:relative; z-index:1; }
+  .accent-pembangkit::before{ background-image:url('assets/hero-bg.jpg'); }
+  .accent-transmisi::before{ background-image:url('assets/transformer.jpg'); }
+  .accent-perjalanan::before{ background-image:url('assets/city.jpg'); }
+
   /* ---------- SCROLL REVEAL (JS) ---------- */
   .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.visible{ opacity:1; transform:none; }
@@ -292,19 +311,23 @@
   <div class="wrap">
     <div class="badge-row">
       <span class="badge"><span class="dot"></span>Seminar Online · Live on Zoom</span>
-      <span class="badge">Coming Soon Agustus</span>
+      <span class="badge">Sabtu, 1 Agustus 2026 · 13.00–16.30 WIB</span>
     </div>
-    <h1>Menelusuri perjalanan listrik dari <span class="accent">pembangkit</span> hingga pengguna.</h1>
-    <p class="lead">Memahami sistem kelistrikan secara menyeluruh — dari cara listrik dibangkitkan, dinaikkan tegangannya, didistribusikan, hingga sistem proteksi yang menjaganya tetap aman sampai ke tangan Anda.</p>
+    <h1 style="letter-spacing:.02em;">BEYOND<br><span class="accent">THE SWITCH</span></h1>
+    <p style="margin-top:20px; font-family:'Poppins',sans-serif; font-weight:500; font-size:clamp(17px,2.4vw,22px); color:var(--ink); max-width:640px;">Menelusuri Perjalanan Listrik dari Pembangkit hingga Pengguna</p>
+    <p class="lead" style="margin-top:16px;">Memahami sistem kelistrikan secara menyeluruh — dari cara listrik dibangkitkan, dinaikkan tegangannya, didistribusikan, hingga sistem proteksi yang menjaganya tetap aman sampai ke tangan Anda.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#daftar">Daftarkan Diri Anda →</a>
       <a class="btn btn-ghost" href="#materi">Lihat Materi</a>
     </div>
-    <p class="quote-strip">"Memahami sistem kelistrikan secara menyeluruh untuk hidup yang lebih aman, andal, dan nyaman."</p>
+    <div class="quote-strip">
+      <p>"Memahami sistem kelistrikan secara menyeluruh untuk hidup yang lebih aman, andal, dan nyaman."</p>
+      <p style="margin-top:14px; font-family:'Poppins',sans-serif; font-style:normal; font-weight:500; font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-light);">Understanding the Power Behind Every Switch</p>
+    </div>
   </div>
 </section>
 
-<section id="kenapa">
+<section id="kenapa" class="bg-accent accent-pembangkit">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Kenapa Harus Ikut</span>
@@ -336,11 +359,15 @@
   </div>
 </section>
 
-<section class="journey" id="materi">
+<section class="journey bg-accent accent-transmisi" id="materi">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Apa yang Anda Pelajari</span>
-      <h2>Lima tahapan perjalanan listrik.</h2>
+      <div style="display:inline-flex; align-items:center; gap:12px; margin-top:16px; border:1px solid rgba(240,178,60,.4); border-radius:100px; padding:8px 20px; background:rgba(240,178,60,.06);">
+        <span style="font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-light);">Pertemuan Pertama</span>
+      </div>
+      <h2 style="margin-top:18px;">The Journey of Electricity</h2>
+      <p style="font-family:'Poppins',sans-serif; font-weight:500; color:var(--ink); margin-top:10px;">Lima tahapan perjalanan listrik.</p>
       <p>Materi disusun mengikuti urutan sebenarnya — dari sumber energi hingga sampai ke perangkat di rumah Anda.</p>
     </div>
     <div class="journey-list">
@@ -381,6 +408,10 @@
         </div>
       </div>
     </div>
+    <div style="margin-top:44px; border:1px solid var(--line); border-radius:16px; padding:26px 28px; display:flex; gap:16px; align-items:flex-start; background:rgba(255,255,255,.02);">
+      <span style="flex-shrink:0; width:10px; height:10px; border-radius:50%; background:var(--gold); margin-top:7px;"></span>
+      <p style="color:var(--ink-dim); font-size:15px;"><strong style="color:var(--ink); font-family:'Poppins',sans-serif; font-weight:600;">Seri berkelanjutan.</strong> "The Journey of Electricity" adalah pertemuan pertama dari seri seminar Beyond The Switch. Pertemuan kedua dan selanjutnya akan diumumkan di halaman ini juga — simpan alamat web ini.</p>
+    </div>
   </div>
 </section>
 
@@ -419,7 +450,7 @@
       </div>
       <div class="info-item">
         <span class="eyebrow">Jadwal</span>
-        <div class="val gold">Agustus 2026</div>
+        <div class="val gold">Sabtu, 1 Agustus 2026<br><span style="font-size:14px; font-weight:500; color:var(--ink-dim);">13.00 – 16.30 WIB</span></div>
       </div>
       <div class="info-item">
         <span class="eyebrow">Untuk Siapa</span>
@@ -439,19 +470,19 @@
       <div class="countdown-title">Menuju Hari-H Seminar</div>
       <!-- Saat tanggal belum fix, tampil mode "Agustus 2026". Cara mengaktifkan angka
            countdown: lihat konstanta EVENT_DATE di bagian <script> paling bawah file ini. -->
-      <div id="cd-tba" class="cd-tba">Agustus 2026</div>
+      <div id="cd-tba" class="cd-tba">Sabtu, 1 Agustus 2026</div>
       <div id="cd-grid" class="countdown-grid" style="display:none;">
         <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-label">Hari</div></div>
         <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Jam</div></div>
         <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Menit</div></div>
         <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Detik</div></div>
       </div>
-      <div class="cd-note" id="cd-note">Tanggal pasti akan diumumkan segera — pantau halaman ini.</div>
+      <div class="cd-note" id="cd-note">Sabtu, 1 Agustus 2026 · 13.00 – 16.30 WIB · Live on Zoom</div>
     </div>
   </div>
 </section>
 
-<section id="faq" style="padding-top:0;">
+<section id="faq" class="bg-accent accent-perjalanan" style="padding-top:0;">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Pertanyaan Umum</span>
@@ -460,7 +491,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" type="button">Kapan seminar ini dilaksanakan?<span class="chev">▾</span></button>
-        <div class="faq-a"><p>Seminar direncanakan pada Agustus 2026. Tanggal dan jam pastinya akan diumumkan di halaman ini serta media sosial Beyond The Switch.</p></div>
+        <div class="faq-a"><p>Seminar dilaksanakan pada Sabtu, 1 Agustus 2026, pukul 13.00 – 16.30 WIB, secara online melalui Zoom.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">Di mana seminar berlangsung?<span class="chev">▾</span></button>
@@ -476,7 +507,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">Bagaimana cara mendaftar?<span class="chev">▾</span></button>
-        <div class="faq-a"><p>Formulir pendaftaran akan dibuka di halaman ini bersamaan dengan pengumuman jadwal resmi. Klik tombol "Daftar Sekarang" di bagian atas untuk menuju bagian pendaftaran.</p></div>
+        <div class="faq-a"><p>Pendaftaran dibuka mulai Sabtu, 18 Juli 2026 langsung di halaman ini. Klik tombol "Daftar Sekarang" di bagian atas untuk menuju bagian pendaftaran.</p></div>
       </div>
     </div>
   </div>
@@ -486,25 +517,31 @@
   <div class="wrap register-inner">
     <span class="eyebrow">Kuota Terbatas</span>
     <h2>Daftarkan diri Anda.</h2>
-    <p>Pendaftaran akan dibuka bersamaan dengan pengumuman jadwal resmi. Detail jadwal &amp; link Zoom akan dikirimkan melalui email/WhatsApp yang Anda daftarkan.</p>
+    <p>Seminar: Sabtu, 1 Agustus 2026 · 13.00 – 16.30 WIB. Link Zoom akan dikirimkan kepada peserta terdaftar sebelum acara.</p>
     <!-- ============================================================
-         FORM PENDAFTARAN — SEDANG DISEMBUNYIKAN SEMENTARA.
-         Cara menampilkan kembali:
-         1. HAPUS blok "coming-soon" di bawah (dari <div class="coming-soon"> s.d. </div> penutupnya).
-         2. HAPUS tanda komentar pembuka dan penutup yang mengapit
-            blok form-card di bawahnya (baris berisi tanda seru dan strip).
+         GERBANG PENDAFTARAN OTOMATIS
+         Panel "reg-locked" tampil sebelum tanggal pembukaan.
+         Blok "reg-open" (berisi Google Form) otomatis muncul mulai
+         Sabtu, 18 Juli 2026 pukul 00.00 WIB — diatur oleh konstanta
+         REG_OPEN_DATE di <script> paling bawah file ini.
          ============================================================ -->
-    <div class="coming-soon" style="margin-top:44px; border:1px dashed rgba(240,178,60,.5); border-radius:20px; padding:52px 32px; background:rgba(240,178,60,.05);">
-      <div style="font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; color:#f7c566;">Pendaftaran Segera Dibuka</div>
-      <p style="margin-top:12px; color:#aebdd6; font-size:15.5px; max-width:460px; margin-left:auto; margin-right:auto;">Formulir pendaftaran akan diaktifkan bersamaan dengan pengumuman jadwal resmi. Pantau terus halaman ini atau media sosial Beyond The Switch.</p>
+    <div id="reg-locked" class="coming-soon" style="margin-top:44px; border:1px dashed rgba(240,178,60,.5); border-radius:20px; padding:52px 32px; background:rgba(240,178,60,.05);">
+      <div style="font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; color:#f7c566;">Pendaftaran Dibuka 18 Juli 2026</div>
+      <div id="reg-cd" class="countdown-grid" style="margin-top:26px;">
+        <div class="cd-unit"><div class="cd-num" id="rc-d">00</div><div class="cd-label">Hari</div></div>
+        <div class="cd-unit"><div class="cd-num" id="rc-h">00</div><div class="cd-label">Jam</div></div>
+        <div class="cd-unit"><div class="cd-num" id="rc-m">00</div><div class="cd-label">Menit</div></div>
+        <div class="cd-unit"><div class="cd-num" id="rc-s">00</div><div class="cd-label">Detik</div></div>
+      </div>
+      <p style="margin-top:24px; color:#aebdd6; font-size:15.5px; max-width:460px; margin-left:auto; margin-right:auto;">Formulir pendaftaran akan terbuka otomatis di halaman ini. Sampai jumpa!</p>
     </div>
 
-    <!--
-    <div class="form-card">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdn_0S6i5zn8JqaQArGxxq5joVYrqp9ydsdhKtTf1Jug4Ekwg/viewform?embedded=true" title="Formulir Pendaftaran Beyond The Switch">Memuat formulir…</iframe>
+    <div id="reg-open" style="display:none;">
+      <div class="form-card">
+        <iframe id="reg-iframe" data-src="https://docs.google.com/forms/d/e/1FAIpQLSdn_0S6i5zn8JqaQArGxxq5joVYrqp9ydsdhKtTf1Jug4Ekwg/viewform?embedded=true" title="Formulir Pendaftaran Beyond The Switch">Memuat formulir…</iframe>
+      </div>
+      <p class="form-fallback">Formulir tidak muncul? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdn_0S6i5zn8JqaQArGxxq5joVYrqp9ydsdhKtTf1Jug4Ekwg/viewform" target="_blank" rel="noopener">Buka di tab baru →</a></p>
     </div>
-    <p class="form-fallback">Formulir tidak muncul? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdn_0S6i5zn8JqaQArGxxq5joVYrqp9ydsdhKtTf1Jug4Ekwg/viewform" target="_blank" rel="noopener">Buka di tab baru →</a></p>
-    -->
   </div>
 </section>
 
@@ -536,7 +573,7 @@
    tanggal & jam acara, format: 'YYYY-MM-DDTHH:MM:SS+07:00'
    Contoh:  const EVENT_DATE = '2026-08-15T09:00:00+07:00';
    Simpan (commit) — angka countdown otomatis aktif.        */
-const EVENT_DATE = null;
+const EVENT_DATE = '2026-08-01T13:00:00+07:00';
 
 (function(){
   const grid = document.getElementById('cd-grid');
@@ -563,6 +600,51 @@ const EVENT_DATE = null;
       tba.textContent='Seminar sedang / telah berlangsung';
       note.textContent='Terima kasih atas partisipasinya!';
       clearInterval(timer);
+      return;
+    }
+    el.d.textContent = pad(Math.floor(diff/86400000));
+    el.h.textContent = pad(Math.floor(diff/3600000)%24);
+    el.m.textContent = pad(Math.floor(diff/60000)%60);
+    el.s.textContent = pad(Math.floor(diff/1000)%60);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
+/* ---------- 1b. GERBANG PENDAFTARAN OTOMATIS ----------
+   Form pendaftaran otomatis terbuka mulai tanggal di bawah.
+   Ubah tanggal ini bila jadwal pembukaan berubah.            */
+const REG_OPEN_DATE = '2026-07-18T00:00:00+07:00';
+
+(function(){
+  const locked = document.getElementById('reg-locked');
+  const opened = document.getElementById('reg-open');
+  const iframe = document.getElementById('reg-iframe');
+  const target = new Date(REG_OPEN_DATE).getTime();
+  const el = {
+    d: document.getElementById('rc-d'), h: document.getElementById('rc-h'),
+    m: document.getElementById('rc-m'), s: document.getElementById('rc-s')
+  };
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function openRegistration(){
+    // muat iframe hanya saat dibutuhkan (hemat kuota pengunjung sebelum dibuka)
+    if(iframe && !iframe.src) iframe.src = iframe.dataset.src;
+    locked.style.display = 'none';
+    opened.style.display = 'block';
+  }
+
+  if(Date.now() >= target){
+    openRegistration();
+    return;
+  }
+
+  // masih terkunci: jalankan hitung mundur pembukaan
+  function tick(){
+    const diff = target - Date.now();
+    if(diff <= 0){
+      clearInterval(timer);
+      openRegistration();
       return;
     }
     el.d.textContent = pad(Math.floor(diff/86400000));
